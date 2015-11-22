@@ -1,0 +1,55 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "AWS CloudFormation Custom::Variable demo stack",
+  "Parameters": {
+    "VariableCustomResourceName": {
+      "Type": "String",
+      "Default": "cfn-variable-0-1-0",
+      "Description": "The name of the Variable Custom Resource Lambda you deployed to test this stack."
+    }
+  },
+  "Resources": {
+    "MyVariable": {
+      "Type": "Custom::Variable",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::Join": [
+            ":",
+            [
+              "arn",
+              "aws",
+              "lambda",
+              {
+                "Ref": "AWS::Region"
+              },
+              {
+                "Ref": "AWS::AccountId"
+              },
+              "function",
+              {
+                "Ref": "VariableCustomResourceName"
+              }
+            ]
+          ]
+        },
+        "String": "value",
+        "Number": 42,
+        "Hash": {
+          "With": "Property"
+        },
+        "Array": [1, 2, 3, 4, 5]
+      }
+    }
+  },
+  "Outputs": {
+    "Variable": {
+      "Description": "Value for base64(JSON.stringify(Variable))",
+      "Value": {
+        "Fn::GetAtt": [
+          "MyVariable",
+          "Value"
+        ]
+      }
+    }
+  }
+}
