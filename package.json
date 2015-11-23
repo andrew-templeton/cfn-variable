@@ -1,6 +1,6 @@
 {
   "name": "cfn-variable",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Custom::Variable | AWS CloudFormation Custom Resource |Variable for CloudFormation Templates",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/andrew-templeton/cfn-variable#readme",
   "dependencies": {
-    "cfn-lambda": "0.6.1"
+    "cfn-lambda": "0.7.0"
   }
 }

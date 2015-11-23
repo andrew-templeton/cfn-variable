@@ -15,7 +15,7 @@ exports.handler = CfnLambda({
 
 function Create(params, reply) {
   console.log('Creating CFN variable: %j', params);
-  var jsonString = JSON.stringify(params);
+  var jsonString = JSON.stringify(params.VariableValue);
   var id = hash(jsonString);
   var value = new Buffer(jsonString).toString('base64');
   reply(null, id, {

@@ -28,8 +28,10 @@ This Lambda makes use of the Lambda-Backed CloudFormation Custom Resource flow m
       "Type": "Type": "Custom::Variable",
       "Properties": {
         "ServiceToken": "arn:aws:lambda:<cfn-region-id>:<your-account-id>:function:<this-deployed-lambda-name>",
-        "FooProperty": {...} // Arbitrary JSON or String or Number or Array
-        "BarProperty": "can by anything" // Just add as much as you want!
+        "VariableValue": { // Arbitrary JSON or String or Number or Array
+          "FooProperty": {...},
+          "BarProperty": "can by anything"
+        }
       }
     }
 
